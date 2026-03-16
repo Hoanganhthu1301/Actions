@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(to right,#ffd6e7,#ffeaf4);
+        }
+
+        .navbar{
+            background: #ff4da6;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar a{
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .hero{
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero img{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero h1{
+            color: #d63384;
+            margin-top: 20px;
+        }
+
+        .hero p{
+            font-size: 18px;
+        }
+
+        .section{
+            width: 900px;
+            max-width: 90%;
+            margin: 30px auto 0;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2{
+            color: #ff4da6;
+        }
+
+        .skills span{
+            background: #ffb3d9;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .contact{
+            text-align: center;
+        }
+
+        .footer{
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+</div>
+
+<div class="hero">
+    <img src="https://i.imgur.com/2DhmtJ4.png" alt="Ảnh đại diện">
+
+    <h1>Hoàng Anh Thư</h1>
+    <p>Java Developer | Spring Boot | Web Developer</p>
+</div>
+
+<div class="section" id="about">
+    <h2>About Me</h2>
+    <p>
+        Xin chào! Tôi là Hoàng Anh Thư.
+        Tôi là sinh viên ngành Công Nghệ Thông Tin và đang học phát triển Web với Java Spring Boot.
+        Tôi thích xây dựng các ứng dụng web, hệ thống quản lý và các dự án thương mại điện tử.
+    </p>
+</div>
+
+<div class="section" id="skills">
+    <h2>Skills</h2>
+
+    <div class="skills">
+        <span>Java</span>
+        <span>Spring Boot</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>MySQL</span>
+        <span>Docker</span>
+    </div>
+</div>
+
+<div class="section" id="contact">
+    <h2>Contact</h2>
+
+    <div class="contact">
+        <p>Email: hoanganhthu1261@email.com</p>
+        <p>Phone: 0359277881</p>
+        <p>Github: github.com/hoanganhthu1301</p>
+    </div>
+</div>
+
+<div class="footer">
+    © 2026 HoangAnhThu Portfolio
+</div>
+<button onclick="loadProfile()">Xem dữ liệu từ Backend</button>
+<p id="result"></p>
+
+<script>
+    async function loadProfile() {
+        const response = await fetch('/api/profile');
+        const data = await response.json();
+        document.getElementById('result').innerText =
+            'Tên: ' + data.name + ' | Email: ' + data.email;
+    }
+</script>
+</body>
+
+</html>
